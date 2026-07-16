@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Data Cleaning — India-First 40B</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"><style>
+:root{--bg:#FAFBFD;--ink:#16162A;--indigo:#2E357E;--indigo-soft:#6169B8;--marigold:#E0982B;
+--teal:#147D74;--teal-soft:#3aa89c;--rose:#B5476B;--line:#E3E4EE;--muted:#656579;--panel:#F1F2F8;--maxw:900px;}
+*{box-sizing:border-box;}html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;}
+a{color:var(--indigo);text-decoration:none;}a:hover{text-decoration:underline;}
+.mono{font-family:"IBM Plex Mono",monospace;}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,251,253,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:11px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.nav .brand{font-family:"Spectral",serif;font-weight:700;color:var(--indigo);font-size:16px;margin-right:auto;letter-spacing:-.01em;}
+.nav a.item{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.03em;color:var(--muted);padding:3px 2px;border-bottom:2px solid transparent;}
+.nav a.item:hover{color:var(--ink);text-decoration:none;}
+.nav a.item.active{color:var(--indigo);border-bottom-color:var(--marigold);}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px 90px;}
+/* hero */
+.hero{padding:56px 0 26px;border-bottom:2px solid var(--ink);}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--indigo);font-weight:600;}
+h1{font-family:"Spectral",serif;font-weight:700;line-height:1.05;font-size:clamp(32px,5.6vw,54px);margin:13px 0 12px;letter-spacing:-.01em;}
+h1 em{font-style:italic;color:var(--indigo);}
+.dek{font-size:18px;color:#33334a;max-width:66ch;margin:0 0 20px;}
+.dek b{color:var(--ink);font-weight:600;}
+.meta{display:flex;flex-wrap:wrap;gap:7px 24px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);}
+.meta b{color:var(--ink);}
+/* page header (detail) */
+.phead{padding:44px 0 18px;border-bottom:2px solid var(--ink);}
+.phead .back{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);}
+.phead h1{font-size:clamp(28px,4.6vw,42px);margin:10px 0 6px;}
+/* sections */
+section{padding-top:40px;}
+h2{font-family:"Spectral",serif;font-weight:600;font-size:clamp(22px,3.4vw,30px);margin:0 0 12px;line-height:1.16;letter-spacing:-.01em;color:var(--indigo);}
+h3{font-weight:600;font-size:16px;margin:22px 0 6px;}
+p{margin:0 0 13px;}.lead{font-size:17.5px;}
+strong{font-weight:600;}
+ul{margin:0 0 14px;padding-left:20px;}li{margin:0 0 8px;line-height:1.55;}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--marigold);font-weight:600;margin-bottom:5px;}
+/* stat strip */
+.stat-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:30px 0 6px;border-radius:10px;overflow:hidden;}
+.stat{background:var(--bg);padding:15px 13px;}
+.stat .n{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:clamp(18px,3vw,24px);color:var(--indigo);line-height:1;}
+.stat .n .u{font-size:.6em;color:var(--muted);}
+.stat .l{font-size:11px;color:var(--muted);margin-top:7px;line-height:1.3;}
+.stat.hot .n{color:var(--marigold);}
+@media(max-width:660px){.stat-strip{grid-template-columns:repeat(2,1fr);}}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:14px 0;}
+.card{border:1px solid var(--line);border-radius:14px;padding:18px 20px;background:#fff;transition:transform .15s,box-shadow .15s,border-color .15s;display:block;}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(20,20,42,.07);border-color:var(--indigo-soft);text-decoration:none;}
+.card .c-k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--marigold);font-weight:600;}
+.card .c-t{font-family:"Spectral",serif;font-weight:600;font-size:19px;color:var(--ink);margin:5px 0 6px;}
+.card .c-d{font-size:13.5px;color:var(--muted);line-height:1.5;}
+.card .c-go{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--indigo);margin-top:9px;}
+@media(max-width:640px){.cards{grid-template-columns:1fr;}}
+/* figure */
+figure{margin:24px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 16px;}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:13px;line-height:1.5;}figcaption b{color:var(--ink);}
+.fig-title{font-weight:600;font-size:14px;margin-bottom:2px;}
+.fig-sub{font-size:11.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;margin-bottom:15px;}
+/* callout */
+.callout{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--marigold);border-radius:0 12px 12px 0;padding:16px 20px;margin:16px 0;}
+.callout .h{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--marigold);font-weight:600;margin-bottom:5px;}
+.callout.contrib{border-left-color:var(--teal);}.callout.contrib .h{color:var(--teal);}
+.callout p{margin:0;}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:12px 0;}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+th{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:var(--indigo);}
+td.n{font-family:"IBM Plex Mono",monospace;text-align:right;white-space:nowrap;}
+tbody tr:nth-child(even){background:#F7F8FC;}
+/* formula + code */
+.eqn{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--indigo);border-radius:8px;padding:11px 15px;margin:12px 0;font-family:"IBM Plex Mono",monospace;font-size:13.5px;overflow-x:auto;}
+.eqn.ours{border-left-color:var(--teal);}
+pre.code{background:#191c38;color:#E9ECFB;border-radius:10px;padding:14px 16px;font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.55;overflow-x:auto;margin:12px 0;white-space:pre;}
+pre.code .k{color:#e6b866;}pre.code .s{color:#8fe0c4;}pre.code .c{color:#7f85b0;}pre.code .r{color:#e295ac;}
+/* donut */
+.donut-row{display:flex;gap:30px;align-items:center;flex-wrap:wrap;}
+.donut{--d:190px;width:var(--d);height:var(--d);border-radius:50%;flex:0 0 auto;
+background:conic-gradient(var(--indigo) 0 40%,var(--teal) 40% 60%,var(--marigold) 60% 82%,var(--rose) 82% 94%,var(--indigo-soft) 94% 100%);
+-webkit-mask:radial-gradient(circle,transparent 50px,#000 51px);mask:radial-gradient(circle,transparent 50px,#000 51px);}
+.legend{flex:1;min-width:230px;display:flex;flex-direction:column;gap:8px;}
+.lg{display:grid;grid-template-columns:13px 1fr auto auto;gap:10px;align-items:center;font-size:13.5px;}
+.sw{width:12px;height:12px;border-radius:3px;}.lg .pct{font-family:"IBM Plex Mono",monospace;font-weight:600;}.lg .tok{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:12px;}
+/* stacked tier bar */
+.tierbar{display:flex;height:44px;border-radius:9px;overflow:hidden;margin:6px 0 12px;border:1px solid var(--line);}
+.seg{display:flex;align-items:center;justify-content:center;color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:11px;text-align:center;padding:0 5px;}
+.tierlegend{display:grid;grid-template-columns:1fr 1fr;gap:7px 18px;font-size:12.5px;}
+.tl{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;}.tl .sw{width:11px;height:11px;border-radius:3px;}.tl .v{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:11.5px;}
+@media(max-width:560px){.tierlegend{grid-template-columns:1fr;}}
+/* fertility grouped chart */
+.fchart{position:relative;height:280px;padding-left:32px;margin:6px 0 2px;}
+.yaxis{position:absolute;left:0;top:0;bottom:28px;width:28px;}
+.ytick{position:absolute;right:5px;transform:translateY(50%);font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);}
+.plot{position:absolute;left:32px;right:0;top:0;bottom:28px;border-bottom:1.5px solid var(--ink);}
+.refline{position:absolute;left:0;right:0;border-top:1.5px dashed var(--rose);}
+.refline .tag{position:absolute;right:0;top:-16px;background:var(--rose);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:9.5px;padding:1px 6px;border-radius:5px;font-weight:600;}
+.floorline{position:absolute;left:0;right:0;border-top:1px dotted #c98aa1;}
+.floorline .tag{position:absolute;right:0;top:-14px;color:var(--rose);font-family:"IBM Plex Mono",monospace;font-size:9px;}
+.fgroups{position:absolute;inset:0;display:flex;gap:5%;padding:0 3%;align-items:flex-end;}
+.fgroup{flex:1;display:flex;gap:5px;justify-content:center;align-items:flex-end;height:100%;}
+.fbar{width:26px;border-radius:4px 4px 0 0;position:relative;}
+.fbar.base{background:linear-gradient(180deg,#8f96cf,var(--indigo));}
+.fbar.tgt{background:linear-gradient(180deg,var(--teal-soft),var(--teal));}
+.fbar .v{position:absolute;top:-15px;left:50%;transform:translateX(-50%);font-family:"IBM Plex Mono",monospace;font-size:9px;font-weight:600;}
+.fxlab{position:absolute;left:32px;right:0;bottom:0;height:28px;display:flex;gap:5%;padding:0 3%;}
+.fxlab span{flex:1;text-align:center;font-size:11px;color:var(--muted);padding-top:6px;}
+.keyrow{display:flex;gap:18px;margin:12px 0 2px;font-size:11.5px;color:var(--muted);flex-wrap:wrap;}
+.keyrow span{display:inline-flex;align-items:center;gap:6px;}.keyrow i{width:11px;height:11px;border-radius:3px;}
+/* horizontal bars */
+.hbars{display:flex;flex-direction:column;gap:13px;margin:4px 0;}
+.hb{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;}
+.hb .name{font-size:12.5px;}.hb .name .f{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:11px;display:block;}
+.hb .track{background:var(--panel);border-radius:7px;height:36px;overflow:hidden;}
+.hb .fillbar{height:100%;border-radius:7px;display:flex;align-items:center;justify-content:flex-end;padding-right:12px;color:#fff;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:13px;min-width:70px;}
+.hb.good .fillbar{background:linear-gradient(90deg,var(--teal-soft),var(--teal));}
+.hb.mid .fillbar{background:linear-gradient(90deg,var(--indigo-soft),var(--indigo));}
+@media(max-width:560px){.hb{grid-template-columns:1fr;}.hb .name{margin-bottom:-4px;}}
+/* flow diagram */
+.flow{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:6px 0 2px;}
+.fstep{flex:1;min-width:150px;background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:13px 14px;position:relative;}
+.fstep.core{background:#eef6f4;border-color:#cfe6e0;}
+.fstep .s-n{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--marigold);font-weight:600;}
+.fstep .s-t{font-weight:600;font-size:13.5px;margin:3px 0 3px;}
+.fstep .s-d{font-size:11.5px;color:var(--muted);line-height:1.4;}
+/* footer */
+.foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);line-height:1.55;}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:34px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;flex-wrap:wrap;}
+.pager a{padding:9px 15px;border:1px solid var(--line);border-radius:9px;background:#fff;}
+.illus{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--muted);background:#eef0f6;border:1px solid var(--line);padding:1px 6px;border-radius:4px;}
+/* mini-viz on cards */
+.mini{margin:12px 0 2px;}
+.mrow{display:flex;align-items:center;gap:8px;margin:4px 0;}
+.mlab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;color:var(--muted);width:82px;flex:0 0 auto;text-align:right;}
+.mtrack{flex:1;background:var(--panel);border-radius:4px;height:9px;overflow:hidden;}
+.mtrack i{display:block;height:100%;border-radius:4px;}
+.mbar{display:flex;height:11px;border-radius:6px;overflow:hidden;margin:12px 0 0;}
+.mbar span{display:block;height:100%;}
+.mseg{display:flex;gap:3px;margin:12px 0 0;}
+.mseg i{flex:1;height:11px;background:var(--indigo-soft);border-radius:3px;display:block;}
+.mseg i.on{background:var(--marigold);}
+.mbars{display:flex;align-items:flex-end;gap:5px;height:38px;margin:12px 0 0;}
+.mbars i{flex:1;background:linear-gradient(180deg,var(--indigo-soft),var(--indigo));border-radius:2px 2px 0 0;display:block;}
+.mbars i.cap{background:linear-gradient(180deg,var(--teal-soft),var(--teal));}
+.msteps{display:flex;align-items:center;gap:5px;flex-wrap:wrap;margin:12px 0 0;font-family:"IBM Plex Mono",monospace;font-size:10px;}
+.msteps b{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:2px 7px;color:var(--ink);font-weight:600;}
+.msteps b.on{background:var(--marigold);color:#fff;border-color:var(--marigold);}
+.msteps .ar{color:var(--muted);}
+.mstat{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0 0;}
+.mstat .chip{font-family:"IBM Plex Mono",monospace;font-size:10px;background:#eef0f6;border:1px solid var(--line);border-radius:5px;padding:2px 7px;color:var(--muted);}
+.mstat .chip b{color:var(--indigo);font-weight:600;}
+/* elaborative detail blocks */
+.dblock{padding:22px 0;border-top:1px solid var(--line);}
+.dblock:first-of-type{border-top:none;padding-top:6px;}
+.dhead{display:flex;align-items:baseline;gap:12px;margin-bottom:9px;}
+.dhead .d-num{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--marigold);}
+.dhead .d-title{font-family:"Spectral",serif;font-weight:600;font-size:22px;color:var(--ink);letter-spacing:-.01em;}
+.dblock p{margin:0 0 10px;font-size:15.5px;color:#33334a;line-height:1.6;}
+.dblock a.more{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--indigo);font-weight:600;}
+.dblock a.more:hover{text-decoration:underline;}
+</style></head><body><div class="nav"><div class="nav-in"><a class="brand" href="index.html">India-First 40B</a><a class="item" href="index.html">Overview</a><a class="item" href="problem.html">Problem & Approach</a><a class="item" href="data.html">Data</a><a class="item active" href="cleaning.html">Cleaning</a><a class="item" href="tokenizer.html">Tokenizer & Fertility</a><a class="item" href="research.html">Research Core</a><a class="item" href="training.html">Post-training</a></div></div><div class="wrap">
+<div class="phead"><div class="back"><a href="index.html">← Overview</a></div><h1>Data Cleaning</h1></div>
+<section><h2>B.2 · Objective-driven filtering</h2>
+<p><b>Cleaning strategy:</b> every stage of the pipeline will serve a defined objective rather than generic hygiene. We will build on AI4Bharat's Setu, a Spark-based pipeline for extraction, cleaning, filtering, and deduplication, and extend it for provenance integrity.</p>
+<ul>
+<li><b>Family-aware language identification</b> — script-sharing languages (Hindi and Marathi both use Devanagari) will be separated with a language-family detector (IndicLID); a mislabelled document corrupts both languages' counts and the per-language repetition budget.</li>
+<li><b>Conservative script normalization</b> — Indic scripts encode the same grapheme several ways; we will canonicalize the encoding without stripping meaningful diacritics or dependent vowels, since over-normalization inflates fertility and damages morphology.</li>
+<li><b>Perplexity-based quality filtering</b> — a CCNet-style n-gram model trained on verified text will score each document; high perplexity flags garbled or mislabelled content.</li>
+<li><b>Deduplication (exact, fuzzy, cross-tier)</b> — MinHash and SemDedup will remove near-duplicates; cross-tier duplicates will be dropped so the provenance tiers stay disjoint. This keeps the repetition accounting valid, since undetected duplicates would push effective epochs past the ~4-epoch cap.</li>
+<li><b>Translationese filtering</b> — machine-translated text shows lower type-token ratio and lower unigram entropy (Velasco &amp; Roque, 2025); a document will enter a native tier only if its translationese score is low, otherwise it is treated as translated. This keeps the native tiers native.</li>
+<li><b>Synthetic-data gating</b> — synthetic text will be generated once, mixed with real data, and never fed back recursively; bland or ungrounded generations will be rejected or demoted to translated.</li>
+<li><b>Toxicity removal</b> — Setu toxicity filtering with Indic word-lists.</li>
+<li><b>Decontamination and perspective-corpus hold-out</b> — evaluation text will be removed and canary strings planted; the contrastive perspective corpus will be strictly excluded from pretraining, so separability measures a learned vantage rather than memorization.</li>
+<li><b>Chauvinism guarding</b> — hostile, us-versus-them framing will be removed from the tiers we repeat and from the chosen side of preference pairs, admitted only as the rejected_B example.</li>
+</ul>
+<div class="callout"><div class="h">Ordering will be enforced</div><p>Deduplication precedes repetition accounting; translationese filtering precedes native-tier trust; decontamination precedes training.</p></div></section>
+<div class="pager"><a href="data.html">← Data Strategy</a><a href="tokenizer.html">Tokenizer & Fertility →</a></div></div></body></html>
